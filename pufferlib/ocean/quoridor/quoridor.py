@@ -8,9 +8,9 @@ from pufferlib.ocean.quoridor import binding
 
 class Quoridor(pufferlib.PufferEnv):
     def __init__(self, num_envs=1, render_mode=None, log_interval=128, size=11, buf=None, seed=0):
-        self.single_observation_space = gymnasium.spaces.Box(low=-2, high=1,
-            shape=(((10*2-1) * (10*2-1) + 3),), dtype=np.float32)
-        self.single_action_space = gymnasium.spaces.Discrete(184)
+        self.single_observation_space = gymnasium.spaces.Box(low=-2, high=10,
+            shape=(530,), dtype=np.float32)
+        self.single_action_space = gymnasium.spaces.Discrete(166)
 
         self.render_mode = render_mode
         self.num_agents = num_envs*2
@@ -91,4 +91,4 @@ def test_win_balance(env, episodes=1000):
 
 if __name__ == '__main__':
     env = Quoridor(num_envs=64)
-    test_win_balance(env, episodes=1000000)
+    test_win_balance(env, episodes=100000)
